@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     //timer stuff
     //reference script here
+    public Conditions condScriptRef;
     //create death function that restarts player at timer end
 
     //sound stuff
@@ -105,7 +106,7 @@ public class PlayerMove : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         float horizontal = Input.GetAxisRaw("Horizontal");//-1 if A, 1 if D
         float vertical = Input.GetAxisRaw("Vertical");//-1 s, 1 W
-        if(horizontal > 0 || vertical >0)
+        if(horizontal > 0 || vertical >0 || horizontal<0 ||vertical < 0)
         {
             if(walkingSound == 1)
             {
@@ -327,6 +328,11 @@ public class PlayerMove : MonoBehaviour
         }
         
         //update UI here when script is written 
+    }
+    if(contact.tag == "Clock")
+    {
+        condScriptRef.timeUpd();
+        Destroy(contact.gameObject);
     }
     if(contact.tag == "WinObj")
         Conditions(1);

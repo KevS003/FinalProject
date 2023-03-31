@@ -15,6 +15,7 @@ public class Conditions : MonoBehaviour
     //StarryNight variables
     public float timer = 60.0f;
     //float timeOG;
+    public float timeBonus = 15f;
 
     // Start is called before the first frame update
     //fill start function with level conditions
@@ -33,7 +34,7 @@ public class Conditions : MonoBehaviour
         if(levelIndex ==1)//Connor
         {
             StarryNight();
-            timeUpdate();
+            //timeUpd();
         }
         else if(levelIndex == 2)//Gage lvl
         {
@@ -62,9 +63,9 @@ public class Conditions : MonoBehaviour
             //kill the player and open menu options
         }
     }
-    public void timeUpdate()
+    public void timeUpd()
     {
         //add timer plus code here
-        //timer += 
+        timer += timeBonus;
     }
 }
