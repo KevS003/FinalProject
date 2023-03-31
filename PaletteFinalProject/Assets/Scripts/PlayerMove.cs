@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerMove : MonoBehaviour
 
     //Animation stuff
     public Animator playerAnim;
+    public float djStartnum = 0;
+    int animationHash;
 
     //timer stuff
     //reference script here
@@ -20,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     int walkingSound =1;
 
     //checkpoint stuff
-    public GameObject startPositionO;//initialize in start function
+    //public GameObject startPositionO;//initialize in start function
     Vector3 startPosition;
     public Transform player;
     Transform playerTransform;
@@ -73,13 +76,17 @@ public class PlayerMove : MonoBehaviour
     public float boostSpeed= 25;
     float ogSpeed;
     float powerUpLength = 6;
+
+    //Conditions
+    public WinLoseScreen winLscreenRef;
     
     void Start()
     {
+        Time.timeScale =1f;
         ogSpeed = speed;
-        playerAnim = this.gameObject.GetComponent<Animator>();
+        //playerAnim = this.gameObject.GetComponent<Animator>();
         playerSound = this.gameObject.GetComponent<AudioSource>();
-        startPosition = startPositionO.transform.position;
+        //startPosition = startPositionO.transform.position;
         Cursor.lockState = CursorLockMode.Locked;
         currentSpeed = startSpeed;
         maxSpeed = speed;
@@ -119,7 +126,7 @@ public class PlayerMove : MonoBehaviour
             currentSpeed = startSpeed;
             walkingSound++;
             PlaySound(walking, 0);
-            PlayAnim(1);
+            PlayAnim(-2);
         }
         Vector3 direction = new Vector3(horizontal,0f, vertical).normalized;
         if(direction.magnitude >=0.1f)
@@ -148,11 +155,13 @@ public class PlayerMove : MonoBehaviour
         {
             speed -= 6;
             isSprinting = false;
+            PlayAnim(-4);
         }
 
         //Jump Stuff
         if(isGrounded && velocity.y <0)
         {
+            PlayAnim(-3);
             velocity.y = -2f;
             velocity.x = 0;
             velocity.z = 0;
@@ -173,6 +182,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             MeleeLaunch();
+            StartCoroutine(StopAnim(1));
         }
 
     }
@@ -226,16 +236,31 @@ public class PlayerMove : MonoBehaviour
 
     void PlayAnim(int animNum)
     {
-        if(animNum == 1)
-            playerAnim.SetBool("Idle", true);
-        else if(animNum == 2)
-            playerAnim.SetBool("Move",true);
-        else if(animNum == 3)
-            playerAnim.SetBool("Jump", true);
-        else if(animNum ==4)
-            playerAnim.SetBool("Sprint",true);
-        else if(animNum == 5)
-            playerAnim.SetBool("Melee", true);
+        if(animNum > 0)
+        {
+
+            if(animNum == 2)
+                playerAnim.SetBool("Move",true);
+            else if(animNum == 3)
+                playerAnim.SetBool("Jump", true);
+            else if(animNum ==4)
+                playerAnim.SetBool("Sprint",true);
+            else if(animNum == 5)
+                playerAnim.SetBool("Melee", true);
+        }
+        else
+        {
+
+            if(animNum == -2)
+                playerAnim.SetBool("Move",false);
+            else if(animNum == -3)
+                playerAnim.SetBool("Jump", false);
+            else if(animNum == -4)
+                playerAnim.SetBool("Sprint",false);
+            else if(animNum == -5)
+                playerAnim.SetBool("Melee", false);
+        }
+        
 
         //idle ==1
         //run== 2
@@ -244,28 +269,6 @@ public class PlayerMove : MonoBehaviour
         //melee ==5
     }
 
-
-
-/*
-    void MeleeLaunch()
-    {
-        Vector3 direction = Vector3.forward;
-        Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * rcRange));
-        Debug.DrawRay(transform.position, transform.TransformDirection(direction * rcRange));
-        if(Physics.Raycast(theRay, out RaycastHit hit, rcRange))
-        {
-            if(hit.collider.tag == "Enemy")
-            {
-                Debug.Log("EnemyDetected");
-
-            }
-            else if(hit.collider.tag == "Object")
-            {
-                Debug.Log("ObjectPush");
-            }
-        }
-        //Yeet objects/enemies backwards//code with raycast contact as concept
-    }*/
     void Teleport(Vector3 respawnL)
     {
         respawnRef = respawnL;
@@ -277,13 +280,14 @@ public class PlayerMove : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight/2 * -2f * gravity);
         doubleJump--;
+        animationHash = Animator.StringToHash("Jump");
+        playerAnim.Play(animationHash, -1, djStartnum);
         //do it incase 
     }
 
   void OnTriggerEnter(Collider contact)//I'm not sure if this works with player collider
   {
-    Debug.Log("hit");
-    
+    Debug.Log("hit"); 
     if(contact.tag == "SpeedBoost")
     {
         Debug.Log("SPEED UP");
@@ -312,16 +316,20 @@ public class PlayerMove : MonoBehaviour
         }
         if(vantaHealth == 0)
         {
+            Conditions(0);
+            /*
             Debug.Log("Respawn L");
             isTP = true;
             vantaHealth = 3;
             currentCP = startPosition;
             //transform.position = startPosition;
-            Teleport(startPosition);
+            Teleport(startPosition);*/
         }
         
         //update UI here when script is written 
     }
+    if(contact.tag == "WinObj")
+        Conditions(1);
   }
 
   private IEnumerator SpeedBoost(float interval)
@@ -341,49 +349,7 @@ private IEnumerator TPtimer(float interval)
 
     yield return new WaitForSeconds(interval);
     isTP = false;
-  }
-
-
-
-
-
-    /*
-    void SprintPlayer()
-    {
-        if(Input.GetKeyDown(KeyCode.LeftShift) )//&& sprintTime >= 0
-        {
-            speed += 6;
-          //isSprinting = true;
-        }
-        else if(Input.GetKeyUp(KeyCode.LeftShift)) //|| sprintTime <=0
-        {
-          //if(speed == 12)
-            speed -= 6;
-          //isSprinting = false;
-          //Debug.Log("NO MORE SPRINT");
-        }
-
-        
-        if(isSprinting == true)
-        {
-          sprintTime-=Time.deltaTime;
-          //Debug.Log("Subtracting: "+ sprintTime);
-        }
-        else
-        {
-            if(sprintTime < sprintTimeOG)
-            {
-                sprintTime += Time.deltaTime;
-                Debug.Log("Adding: "+ sprintTime);
-            }
-        }
-    }*/
-
-
-
-
-    //add sounds and conditions here
-    
+  } 
     public void PlaySound(AudioClip clip, int play)//1 is to start audio 0 is to stop audio
     {
         if(play ==1)
@@ -392,24 +358,33 @@ private IEnumerator TPtimer(float interval)
             playerSound.Stop();
     }
     
-    /*
-    void GameOver(bool winL)
+    private IEnumerator StopAnim(float interval)
     {
-    //stop all movement like the pause screen and unlock the mouse
-        if(winL == false)
+        yield return new WaitForSeconds(interval);
+        PlayAnim(-5);
+
+    }
+    //functions called by other scripts
+    // kill player or win condtions
+    public void Conditions(int winL)
+    {
+        if(winL == 1)
         {
-        PlaySound(lose);
-        ending--;
-      //turn off game audio component here
-      //UI updates to lose screen (prolly gonna do that on another screen)
+            //win stuff
+            winLscreenRef.Pause(1);
         }
-        if(winL == true)
+        else
         {
-        PlaySound(win);
-        ending++;
-      //same as lose but for a win
+            winLscreenRef.Pause(0);
+            //lose stuff
         }
-        
+
+    }
+    /*public void Win()
+    {
+
     }*/
+    
+
 
 }
