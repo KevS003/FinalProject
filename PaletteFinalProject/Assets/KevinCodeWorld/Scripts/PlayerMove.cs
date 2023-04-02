@@ -149,7 +149,7 @@ public class PlayerMove : MonoBehaviour
         //sprint stuff
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed += 6;
+            speed += 4;
             isSprinting = true;
             PlayAnim(4);
             
