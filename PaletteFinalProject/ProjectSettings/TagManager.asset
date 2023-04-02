@@ -3,16 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Object
+  - Enemy
+  - LedgeReveal
+  - SpeedBoost
+  - HiddenLedge
+  - DeathBorder
+  - Checkpoint
+  - EnemyProjectile
+  - EnemyContact
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - Ground
   - 
   - 
   - 
