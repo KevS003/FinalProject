@@ -10,8 +10,11 @@ public class UI : MonoBehaviour
     int i = 0;
     //image
     public Image uiImage;
+    public GameObject speedBoostUIObj;
+    public GameObject hiddenVObj;
     //loopVar/charRef
     public PlayerMove playerHealthRef;
+    //public Interactions interactRef;
     int healthCurrent;
     int cHealthTrackerLoop;
 
@@ -30,13 +33,19 @@ public class UI : MonoBehaviour
         if(healthCurrent!=cHealthTrackerLoop)
         {
             cHealthTrackerLoop--;
-            i++;
-            if(i== 3)
-            {
-                i=0;
-            }
             uiImage.sprite = healthPic[i];
+            i++;
 
         }
+        if(playerHealthRef.boosted)
+            speedBoostUIObj.SetActive(true);
+        else
+            speedBoostUIObj.SetActive(false);
+
+            //activate UI here
+        if(playerHealthRef.hiddenV)
+            hiddenVObj.SetActive(true);
+        else
+            hiddenVObj.SetActive(false);
     }
 }

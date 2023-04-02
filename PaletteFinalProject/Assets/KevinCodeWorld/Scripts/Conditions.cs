@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Conditions : MonoBehaviour
 {
@@ -16,16 +17,18 @@ public class Conditions : MonoBehaviour
     public float timer = 60.0f;
     //float timeOG;
     public float timeBonus = 15f;
+    public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
     //fill start function with level conditions
     void Start()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        if(currentSceneName =="CodeKevinScene")
+        if(currentSceneName =="Level One")
         {
             levelIndex =1;
         }
+        timerText.text = timer.ToString(".0f");
     }
 
     // Update is called once per frame
@@ -55,6 +58,7 @@ public class Conditions : MonoBehaviour
         if (timer > 0f && playerVarRef.vantaHealth >0)
         {
             timer -= Time.deltaTime;
+            timerText.text = timer.ToString("f0");
             Debug.Log("Timer: "+ timer);
         }
         else

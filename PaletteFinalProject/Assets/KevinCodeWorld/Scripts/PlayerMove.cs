@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    //UI 
+    public bool hiddenV = false;
+    public float hiddenLedgeTimer = 10;
     //player health
     public int vantaHealth = 3;
 
@@ -24,7 +27,7 @@ public class PlayerMove : MonoBehaviour
     int walkingSound =1;
 
     //checkpoint stuff
-    //public GameObject startPositionO;//initialize in start function
+    public GameObject startPositionO;//initialize in start function
     Vector3 startPosition;
     public Transform player;
     Transform playerTransform;
@@ -74,6 +77,7 @@ public class PlayerMove : MonoBehaviour
     //private Yeet[] objYeet;
 
     //powerupStuff
+    public bool boosted = false;
     public float boostSpeed= 25;
     float ogSpeed;
     float powerUpLength = 6;
@@ -87,7 +91,7 @@ public class PlayerMove : MonoBehaviour
         ogSpeed = speed;
         //playerAnim = this.gameObject.GetComponent<Animator>();
         playerSound = this.gameObject.GetComponent<AudioSource>();
-        //startPosition = startPositionO.transform.position;
+        currentCP = startPositionO.transform.position;
         Cursor.lockState = CursorLockMode.Locked;
         currentSpeed = startSpeed;
         maxSpeed = speed;
@@ -289,12 +293,17 @@ public class PlayerMove : MonoBehaviour
   void OnTriggerEnter(Collider contact)//I'm not sure if this works with player collider
   {
     Debug.Log("hit"); 
+
     if(contact.tag == "SpeedBoost")
     {
         Debug.Log("SPEED UP");
         StartCoroutine(SpeedBoost(powerUpLength));
         //Speedboost text here//reference UI script here
         //bool to make a counter go//ref UI script here
+    }
+    if(contact.tag == "LedgeReveal")
+    {
+        StartCoroutine(UItimerHV(hiddenLedgeTimer));
     }
     if(contact.tag == "Checkpoint")
     {
@@ -340,15 +349,23 @@ public class PlayerMove : MonoBehaviour
 
   private IEnumerator SpeedBoost(float interval)
   {
+    boosted = true;
     if(isSprinting)
         speed= boostSpeed+6;
     else
         speed = boostSpeed;
     yield return new WaitForSeconds(interval);
+    boosted = false;
     if(isSprinting)
         speed = ogSpeed+6;
     else
         speed = ogSpeed;
+  }
+  private IEnumerator UItimerHV(float interval)
+  {
+    hiddenV = true;
+    yield return new WaitForSeconds(interval);
+    hiddenV = false;
   }
 private IEnumerator TPtimer(float interval)
   {
