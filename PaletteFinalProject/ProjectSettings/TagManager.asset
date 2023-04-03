@@ -15,6 +15,7 @@ TagManager:
   - EnemyProjectile
   - EnemyContact
   - Clock
+  - WinObj
   layers:
   - Default
   - TransparentFX
