@@ -14,6 +14,7 @@ TagManager:
   - Checkpoint
   - EnemyProjectile
   - EnemyContact
+  - Clock
   layers:
   - Default
   - TransparentFX
