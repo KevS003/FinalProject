@@ -36,7 +36,7 @@ public class WinLoseScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         //Load Menu scene
-        //SceneManager.LoadScene("");ADD MENU SCENE INFO HERE
+        SceneManager.LoadScene("MainMenu");
         Debug.Log("MenuLoad");
     }
     public void Restart()
