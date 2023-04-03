@@ -63,6 +63,7 @@ public class PlayerMove : MonoBehaviour
 
     //Sprinting stuff
     public float sprintTime = 4.5f;
+    public float sprintBoost;
     float sprintTimeOG;
     bool isSprinting;
 
@@ -108,6 +109,7 @@ public class PlayerMove : MonoBehaviour
     void ControlPlayer()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        Debug.Log(isGrounded);
         float horizontal = Input.GetAxisRaw("Horizontal");//-1 if A, 1 if D
         float vertical = Input.GetAxisRaw("Vertical");//-1 s, 1 W
         if(horizontal > 0 || vertical >0 || horizontal<0 ||vertical < 0)
@@ -149,7 +151,7 @@ public class PlayerMove : MonoBehaviour
         //sprint stuff
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed += 4;
+            speed += sprintBoost;
             isSprinting = true;
             PlayAnim(4);
             
@@ -158,7 +160,7 @@ public class PlayerMove : MonoBehaviour
         
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed -= 6;
+            speed -= sprintBoost;
             isSprinting = false;
             PlayAnim(-4);
         }
@@ -187,7 +189,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             MeleeLaunch();
-            StartCoroutine(StopAnim(1));
+            //StartCoroutine(StopAnim(1.2f));
         }
 
     }
@@ -205,7 +207,7 @@ public class PlayerMove : MonoBehaviour
 
     void MeleeLaunch()
     {
-        PlayAnim(5);
+        //PlayAnim(5);
         Vector3 direction = Vector3.forward;
         Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * rcRange));
         Debug.DrawRay(transform.position, transform.TransformDirection(direction * rcRange));
