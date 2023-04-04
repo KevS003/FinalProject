@@ -544,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &487192346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +560,7 @@ MonoBehaviour:
   playerVarRef: {fileID: 479180530}
   timer: 60
   timeBonus: 15
+  timerText: {fileID: 0}
 --- !u!4 &487192347
 Transform:
   m_ObjectHideFlags: 0
@@ -747,6 +748,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ddf2e76e8a1f88f46ae1e42277850b48, type: 3}
   - {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
   uiImage: {fileID: 96083885}
+  speedBoostUIObj: {fileID: 0}
+  hiddenVObj: {fileID: 0}
   playerHealthRef: {fileID: 479180530}
 --- !u!114 &582816169
 MonoBehaviour:
