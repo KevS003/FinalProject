@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UI : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class UI : MonoBehaviour
     int i = 0;
     //image
     public Image uiImage;
+    public GameObject uiTimerPic;
     public GameObject speedBoostUIObj;
     public GameObject hiddenVObj;
     //loopVar/charRef
@@ -23,7 +26,19 @@ public class UI : MonoBehaviour
     {
         healthCurrent = playerHealthRef.vantaHealth;
         cHealthTrackerLoop =healthCurrent;
-        
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if(currentSceneName =="Level One")
+        {
+            //mountain UI possibly
+        }
+        else if(currentSceneName =="Level Two")
+        {
+
+        }
+        else if(currentSceneName =="Level Three")
+        {
+            uiTimerPic.SetActive(true);
+        }
     }
 
     // Update is called once per frame

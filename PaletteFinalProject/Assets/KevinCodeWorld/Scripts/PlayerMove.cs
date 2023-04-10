@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    //level var
+    public bool starryMComplete = false;
+    public bool secondLvlComp = false;
+    public bool thirdLvlComp = false;
     //UI 
     public bool hiddenV = false;
     public float hiddenLedgeTimer = 10;
@@ -121,6 +125,11 @@ public class PlayerMove : MonoBehaviour
             }
             if(isSprinting == false)
                 PlayAnim(2);
+            else if(isSprinting == true)
+            {
+                PlayAnim(-2);
+                PlayAnim(4);
+            }
             if(currentSpeed<=speed)
             {
                 currentSpeed+=rampUpRate*Time.deltaTime;
@@ -134,6 +143,10 @@ public class PlayerMove : MonoBehaviour
             walkingSound++;
             PlaySound(walking, 0);
             PlayAnim(-2);
+            if(isSprinting == true)
+            {
+                PlayAnim(-4);
+            }
         }
         Vector3 direction = new Vector3(horizontal,0f, vertical).normalized;
         if(direction.magnitude >=0.1f)
@@ -153,7 +166,7 @@ public class PlayerMove : MonoBehaviour
         {
             speed += sprintBoost;
             isSprinting = true;
-            PlayAnim(4);
+                
             
         }
           
@@ -188,9 +201,10 @@ public class PlayerMove : MonoBehaviour
         //melee stuff
         if(Input.GetMouseButtonDown(0))
         {
-            MeleeLaunch();
-            //StartCoroutine(StopAnim(1.2f));
+            playerAnim.Play("Melee");
+            MeleeLaunch(); 
         }
+
 
     }
 
@@ -227,14 +241,15 @@ public class PlayerMove : MonoBehaviour
             //Come back when yeet script is created
             //Make way to keep track of way player is facing 
             Yeet enemyYeet=enemiesInRange[i].GetComponent<Yeet>();
-            enemyYeet.yeet(moveDir);
+            enemyYeet.getDir(moveDir);
         }
         for(int i = 0; i < objInRange.Length; i++)
         {
             //Come back when yeet script is written
             //make a way to keep track of direction player is facing. 
             Yeet objYeet=objInRange[i].GetComponent<Yeet>();
-            objYeet.yeet(moveDir);
+            //if()//arm reaches object yeet
+                objYeet.getDir(moveDir);
         }
         //yeet script is activated for these objects.
         //Yeet objects/enemies backwards//code with raycast contact as concept
@@ -346,7 +361,13 @@ public class PlayerMove : MonoBehaviour
         Destroy(contact.gameObject);
     }
     if(contact.tag == "WinObj")
+    {
+        if(condScriptRef.levelIndex == 1)
+        {
+            starryMComplete = true;
+        }
         Conditions(1);
+    }
   }
 
   private IEnumerator SpeedBoost(float interval)

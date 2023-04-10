@@ -12,6 +12,7 @@ public class Yeet : MonoBehaviour
     public MeshRenderer offObj;
     Rigidbody stopMove;
     float yeetPower;
+    Vector3 dir;
     void Start()
     {
         if(this.gameObject.tag ==("Object"))
@@ -27,20 +28,18 @@ public class Yeet : MonoBehaviour
             stopMove = this.gameObject.GetComponent<Rigidbody>();
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void getDir(Vector3 direction)
     {
-        
+        dir = direction;
     }
 
-    public void yeet(Vector3 direction)
-    {
-        gameObject.GetComponent<Rigidbody>().AddForce(direction *yeetPower * Time.deltaTime);
-    }
 
     void OnCollisionEnter(Collision impact)
     {
+        if(impact.collider.tag == ("Brush"))
+        {
+            yeet(dir);
+        }
         if(isEnemy)
         {
             //make wall impact to stick enemies
@@ -56,5 +55,10 @@ public class Yeet : MonoBehaviour
             }
         }
 
+    }
+    
+    public void yeet(Vector3 direction)
+    {
+        gameObject.GetComponent<Rigidbody>().AddForce(direction *yeetPower * Time.deltaTime);
     }
 }
