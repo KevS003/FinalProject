@@ -16,6 +16,9 @@ TagManager:
   - EnemyContact
   - Clock
   - WinObj
+  - Brush
+  - Star
+  - Dummy
   layers:
   - Default
   - TransparentFX
@@ -25,8 +28,8 @@ TagManager:
   - UI
   - Wall
   - Ground
-  - 
-  - 
+  - Brush
+  - Mountain
   - 
   - 
   - 
