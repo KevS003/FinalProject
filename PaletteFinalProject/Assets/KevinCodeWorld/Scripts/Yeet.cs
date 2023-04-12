@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Yeet : MonoBehaviour
 {
+    //dummy var
+    public GameObject dummyObj;
     //UI REF
     public UI uiRef;
     //star var
     int amountPoint = 0;
+    //enemy script ref
+    public ChaseEnemyScript chaseRef;
     // Start is called before the first frame update
     public float yeetPowerEnemy = 10000000;
     public float yeetPowerObject = 10000;
     public float yeetPowerStar = 5000000;
     bool isEnemy;
     bool isStar;
+    bool isDummy;
     public GameObject painting;
     public MeshRenderer offObj;
     Rigidbody stopMove;
@@ -39,6 +44,10 @@ public class Yeet : MonoBehaviour
             isStar = true;
             stopMove = this.gameObject.GetComponent<Rigidbody>();
         }
+        else if(this.gameObject.tag ==("Dummy"))
+        {
+            isDummy = true;
+        }
 
     }
     public void getDir(Vector3 direction)
@@ -51,7 +60,8 @@ public class Yeet : MonoBehaviour
     {
         if(impact.collider.tag == ("Brush"))
         {
-            yeet(dir);
+            if(isDummy == false)
+                yeet(dir);
         }
         if(isEnemy)
         {
@@ -62,22 +72,27 @@ public class Yeet : MonoBehaviour
                 painting.SetActive(true);
                 stopMove.isKinematic = true;
                 offObj.enabled = false;
+                chaseRef.StopChase();
             }
         }
         else if(isStar)
         {
-                if(impact.collider.tag == ("Wall"))
+            if(impact.collider.tag == ("Wall"))
+            {
+                painting.SetActive(true);
+                stopMove.isKinematic = true;
+                offObj.enabled = false;
+                //send info to UI
+                if(amountPoint<1)
                 {
-                    painting.SetActive(true);
-                    stopMove.isKinematic = true;
-                    offObj.enabled = false;
-                    //send info to UI
-                    if(amountPoint<1)
-                    {
-                        amountPoint++;
-                        uiRef.StarryUi();
-                    }
+                    amountPoint++;
+                    uiRef.StarryUi();
                 }
+            }
+        }
+        else if(isDummy)
+        {
+            dummyObj.SetActive(true);
         }
 
     }

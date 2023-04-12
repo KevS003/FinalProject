@@ -327,17 +327,26 @@ public class PlayerMove : MonoBehaviour
         currentCP = contact.transform.position;
         Debug.Log("CPFound"+ currentCP);
     }
-    if(contact.tag == "DeathBorder" || contact.tag == "EnemyProjectile" || contact.tag == "EnemyContact")
+    if(contact.tag == "DeathBorder" || contact.tag == "EnemyProjectile" || contact.tag == "Enemy")
     {
         
         
         Debug.Log("dmg!" + vantaHealth);
-        if(contact.tag == "DeathBorder" && vantaHealth > 0)
+        if(contact.tag == "DeathBorder"&& vantaHealth > 0)
         {
             vantaHealth--;
             Debug.Log("TP ME!");
             isTP = true;
             Teleport(currentCP);
+            //transform.position = currentCP;
+            //TP player to last ledge they fell from if they fell
+        }
+        if(contact.tag == "Enemy"&& vantaHealth > 0)
+        {
+            vantaHealth--;
+            Debug.Log("DMG ME!");
+            //isTP = true;
+            //Teleport(currentCP);
             //transform.position = currentCP;
             //TP player to last ledge they fell from if they fell
         }
