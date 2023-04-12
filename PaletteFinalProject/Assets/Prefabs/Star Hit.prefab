@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7757859497233504898}
   m_Layer: 6
   m_Name: Star Hit
-  m_TagString: Enemy
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,8 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2eea9184eee7ee4fb1cf761da1605ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiRef: {fileID: 0}
   yeetPowerEnemy: 5000000
   yeetPowerObject: 5000000
+  yeetPowerStar: 5000000
   painting: {fileID: 7045572021289425762}
   offObj: {fileID: 7757859497233504902}
 --- !u!54 &7757859497233504898

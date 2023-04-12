@@ -55,3 +55,4 @@ MonoBehaviour:
   - {fileID: 0}
   timeBonus: 15
   timerText: {fileID: 0}
+  starWinAct: {fileID: 0}

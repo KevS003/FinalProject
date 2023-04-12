@@ -7,11 +7,20 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
+    //conditionsScriptRef
+    public Conditions condRef;
+    //starry night
+    int starYeetCount=-1;
+    //level tracker
+    int lvlNum;
     //array with all images
     public Sprite[] healthPic;
+    public Sprite [] mountainPic;
     int i = 0;
     //image
     public Image uiImage;
+    public Image mountainImage;
+    public GameObject mountainObjRef;
     public GameObject uiTimerPic;
     public GameObject speedBoostUIObj;
     public GameObject hiddenVObj;
@@ -29,15 +38,19 @@ public class UI : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         if(currentSceneName =="Level One")
         {
+            lvlNum = 1;
+            mountainObjRef.SetActive(true);
             //mountain UI possibly
         }
         else if(currentSceneName =="Level Two")
         {
-
+            lvlNum = 2;
+            uiTimerPic.SetActive(true);
         }
         else if(currentSceneName =="Level Three")
         {
-            uiTimerPic.SetActive(true);
+            lvlNum = 3;
+            
         }
     }
 
@@ -62,5 +75,16 @@ public class UI : MonoBehaviour
             hiddenVObj.SetActive(true);
         else
             hiddenVObj.SetActive(false);
+    }
+
+    public void StarryUi()
+    {
+        starYeetCount++;
+        mountainImage.sprite = mountainPic[starYeetCount];
+        if(starYeetCount == 5)
+        {
+            //ACTIVATE STAR UI ELEMENT ABOVE MOUNTAIN
+            condRef.StarryNightActivateOBJ();
+        }
     }
 }

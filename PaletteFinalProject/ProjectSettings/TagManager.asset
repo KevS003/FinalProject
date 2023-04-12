@@ -17,6 +17,8 @@ TagManager:
   - Clock
   - WinObj
   - Brush
+  - Star
+  - Dummy
   layers:
   - Default
   - TransparentFX

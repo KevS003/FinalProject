@@ -24,6 +24,8 @@ public class Conditions : MonoBehaviour
     //float timeOG;
     public float timeBonus = 15f;
     public TextMeshProUGUI timerText;
+    //SN Win obj activate
+    public GameObject starWinAct;
 
     // Start is called before the first frame update
     //fill start function with level conditions
@@ -37,16 +39,18 @@ public class Conditions : MonoBehaviour
             {
                 snowEffect[i].SetActive(true);
             }
+            //star counter
             //mountain update possibly
         }
         else if(currentSceneName == "Level Two")
         {
             levelIndex =2;
+            timerText.text = timer.ToString(".0f");
         }
         else if(currentSceneName == "Level Three")
         {
             levelIndex =3;
-            timerText.text = timer.ToString(".0f");
+            
         }
         else if(currentSceneName == "Level Four")
         {
@@ -66,7 +70,7 @@ public class Conditions : MonoBehaviour
         if(levelIndex ==1)//Connor
         {
             if(playerVarRef.starryMComplete == true)
-                StarryNight();
+                StarryNightComplete();
         }
         else if(levelIndex == 2)//Gage lvl
         {
@@ -83,7 +87,12 @@ public class Conditions : MonoBehaviour
         }
     }
 
-    void StarryNight()
+
+    public void StarryNightActivateOBJ()
+    {
+        starWinAct.SetActive(true);
+    }
+    void StarryNightComplete()
     {
         starryMountainComplete = true;
     }
