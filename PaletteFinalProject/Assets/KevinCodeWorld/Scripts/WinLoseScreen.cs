@@ -18,14 +18,46 @@ public class WinLoseScreen : MonoBehaviour
     public void Pause(int winL)
     {
         winLMenuUI.SetActive(true);
+        if(SceneManager.GetActiveScene().name == "Level One")
+        {
         //changes text
-        if(winL ==1)
-        {
-            winLoseText.text = "Paint onto the night";//win
+            if(winL ==1)
+            {
+                winLoseText.text = "Paint onto the night";//win
+            }
+            else
+            {
+                winLoseText.text = "Try again?";//lose
+            }
         }
-        else
+        else if(SceneManager.GetActiveScene().name == "Level Two")
         {
-            winLoseText.text = "Try again?";//lose
+            if(winL ==1)
+            {
+                winLoseText.text = "You dominated the maze!";//win
+            }
+            else
+            {
+                winLoseText.text = "Try again?";//lose
+            }
+        }
+        else if(SceneManager.GetActiveScene().name == "Level Three")
+        {
+            if(winL ==1)
+            {
+                winLoseText.text = "You survived the gauntlet!";//win
+            }
+            else
+            {
+                winLoseText.text = "Try again?";//lose
+            }
+        }
+        else if(SceneManager.GetActiveScene().name == "Hub")
+        {
+            if(winL ==1)
+            {
+                winLoseText.text = "The painting has been complete!";//win
+            }
         }
         winLMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
@@ -41,7 +73,10 @@ public class WinLoseScreen : MonoBehaviour
     }
     public void Restart()
     {
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void Hub()
+    {
+        SceneManager.LoadScene("Hub");
     }
 }

@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    //audio clips
 
 
     // Update is called once per frame
@@ -48,5 +49,9 @@ public class PauseMenu : MonoBehaviour
         //Load Menu scene
         SceneManager.LoadScene("MainMenu");
         Debug.Log("MenuLoad");
+    }
+    public void Hub()
+    {
+        SceneManager.LoadScene("Hub");
     }
 }

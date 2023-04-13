@@ -21,6 +21,7 @@ public class UI : MonoBehaviour
     public Image uiImage;
     public Image mountainImage;
     public GameObject mountainObjRef;
+    public GameObject mountainStarObj;
     public GameObject uiTimerPic;
     public GameObject speedBoostUIObj;
     public GameObject hiddenVObj;
@@ -83,7 +84,7 @@ public class UI : MonoBehaviour
         mountainImage.sprite = mountainPic[starYeetCount];
         if(starYeetCount == 5)
         {
-            //ACTIVATE STAR UI ELEMENT ABOVE MOUNTAIN
+            mountainStarObj.SetActive(true);
             condRef.StarryNightActivateOBJ();
         }
     }
