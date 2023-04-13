@@ -51,7 +51,6 @@ public class UI : MonoBehaviour
         else if(currentSceneName =="Level Three")
         {
             lvlNum = 3;
-            
         }
     }
 
