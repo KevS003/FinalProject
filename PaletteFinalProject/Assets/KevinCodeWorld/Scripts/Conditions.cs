@@ -45,7 +45,7 @@ public class Conditions : MonoBehaviour
         else if(currentSceneName == "Level Two")
         {
             levelIndex =2;
-            timerText.text = timer.ToString(".0f");
+            timerText.text = timer.ToString("f0");
         }
         else if(currentSceneName == "Level Three")
         {
@@ -110,10 +110,6 @@ public class Conditions : MonoBehaviour
     }
     void LevelTwo()
     {
-
-    }
-    void LevelThree()
-    {
         if (timer > 0f && playerVarRef.vantaHealth >0)
         {
             timer -= Time.deltaTime;
@@ -125,6 +121,9 @@ public class Conditions : MonoBehaviour
             playerVarRef.Conditions(0);
             //kill the player and open menu options
         }
+    }
+    void LevelThree()
+    {
     }
     public void timeUpd()
     {
