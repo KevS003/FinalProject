@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Yeet : MonoBehaviour
 {
+    //sound variables
+    public AudioSource audioSource;
+    public AudioClip firework;
+    public AudioClip fireworkExplosion;
+    public AudioClip sploshSound;//both dummy and enemies
+    public AudioClip splashWallSound;
     //dummy var
     public GameObject dummyObj;
     //UI REF
@@ -60,6 +66,7 @@ public class Yeet : MonoBehaviour
     {
         if(impact.collider.tag == ("Brush"))
         {
+            //audioSource.PlayOneShot(sploshSound);
             if(isDummy == false)
                 yeet(dir);
         }
@@ -68,7 +75,7 @@ public class Yeet : MonoBehaviour
             //make wall impact to stick enemies
             if(impact.collider.tag == ("Wall"))
             {
-                
+                //audioSource.PlayOneShot(splashWallSound);
                 painting.SetActive(true);
                 stopMove.isKinematic = true;
                 offObj.enabled = false;
@@ -77,8 +84,11 @@ public class Yeet : MonoBehaviour
         }
         else if(isStar)
         {
+
+            //audioSource.PlayOneShot(firework);
             if(impact.collider.tag == ("Wall"))
             {
+                //audioSource.PlayOneShot(fireworkExplosion);
                 painting.SetActive(true);
                 stopMove.isKinematic = true;
                 offObj.enabled = false;
@@ -92,6 +102,7 @@ public class Yeet : MonoBehaviour
         }
         else if(isDummy)
         {
+            //audioSource.PlayOneShot(sploshSound);
             dummyObj.SetActive(true);
         }
 

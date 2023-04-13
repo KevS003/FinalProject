@@ -19,6 +19,7 @@ TagManager:
   - Brush
   - Star
   - Dummy
+  - Spawner
   layers:
   - Default
   - TransparentFX

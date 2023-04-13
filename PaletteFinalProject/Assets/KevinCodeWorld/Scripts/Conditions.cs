@@ -54,7 +54,19 @@ public class Conditions : MonoBehaviour
         }
         else if(currentSceneName == "Level Four")
         {
+            //tracks canvas 
+            if(starryMountainComplete)
+            {
+                //paint canvas
+            }
+            else if(lvlTwoComplete)
+            {
+                //SetActive()//paint object
+            }
+            else if(lvlThreeComplete)
+            {
 
+            }
         }
         else if(currentSceneName == "CodeKevinScene")
         {

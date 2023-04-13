@@ -28,6 +28,9 @@ public class PlayerMove : MonoBehaviour
     //sound stuff
     AudioSource playerSound;
     public AudioClip walking;
+    public AudioClip swing;
+    public AudioClip dmg;
+    public AudioClip jumpSound;
     int walkingSound =1;
 
     //checkpoint stuff
@@ -210,6 +213,7 @@ public class PlayerMove : MonoBehaviour
 
     void JumpPlayer(float moveDirJ)
     {
+        //PlaySound(jumpSound, 1);
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         if(moveDirJ > 0)
             velocity += transform.forward * (currentSpeed/1.5f);
@@ -222,6 +226,7 @@ public class PlayerMove : MonoBehaviour
     void MeleeLaunch()
     {
         //PlayAnim(5);
+        //PlaySound(swing,1);
         Vector3 direction = Vector3.forward;
         Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * rcRange));
         Debug.DrawRay(transform.position, transform.TransformDirection(direction * rcRange));
@@ -300,6 +305,7 @@ public class PlayerMove : MonoBehaviour
 
     void DoubleJump()//Try it out
     {
+        //PlaySound(jumpSound, 1);
         velocity.y = Mathf.Sqrt(jumpHeight/2 * -2f * gravity);
         doubleJump--;
         animationHash = Animator.StringToHash("Jump");
@@ -343,6 +349,7 @@ public class PlayerMove : MonoBehaviour
         }
         if(contact.tag == "Enemy"&& vantaHealth > 0)
         {
+            //PlaySound(dmg, 1);
             vantaHealth--;
             Debug.Log("DMG ME!");
             //isTP = true;
@@ -361,8 +368,6 @@ public class PlayerMove : MonoBehaviour
             //transform.position = startPosition;
             Teleport(startPosition);*/
         }
-        
-        //update UI here when script is written 
     }
     if(contact.tag == "Clock")
     {
@@ -393,19 +398,24 @@ public class PlayerMove : MonoBehaviour
     else
         speed = ogSpeed;
   }
+
   private IEnumerator UItimerHV(float interval)
   {
     hiddenV = true;
     yield return new WaitForSeconds(interval);
     hiddenV = false;
   }
-private IEnumerator TPtimer(float interval)
+
+
+  private IEnumerator TPtimer(float interval)
   {
 
     yield return new WaitForSeconds(interval);
     isTP = false;
-  } 
-    public void PlaySound(AudioClip clip, int play)//1 is to start audio 0 is to stop audio
+  }
+
+
+  public void PlaySound(AudioClip clip, int play)//1 is to start audio 0 is to stop audio
     {
         if(play ==1)
             playerSound.PlayOneShot(clip);
@@ -413,12 +423,14 @@ private IEnumerator TPtimer(float interval)
             playerSound.Stop();
     }
     
-    private IEnumerator StopAnim(float interval)
+   private IEnumerator StopAnim(float interval)
     {
         yield return new WaitForSeconds(interval);
         PlayAnim(-5);
 
     }
+
+
     //functions called by other scripts
     // kill player or win condtions
     public void Conditions(int winL)
@@ -435,6 +447,7 @@ private IEnumerator TPtimer(float interval)
         }
 
     }
+
     /*public void Win()
     {
 
