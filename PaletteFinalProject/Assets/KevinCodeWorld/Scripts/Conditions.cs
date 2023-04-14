@@ -6,6 +6,8 @@ using TMPro;
 
 public class Conditions : MonoBehaviour
 {
+    //lvl two var
+    public bool notTesting = false;
     //game tracker
     public static bool starryMountainComplete = false;
     public static bool lvlTwoComplete = false;
@@ -67,6 +69,10 @@ public class Conditions : MonoBehaviour
             {
 
             }
+            if(lvlThreeComplete && lvlTwoComplete && starryMountainComplete)
+            {
+                //Spawn game winning object here
+            }
         }
         else if(currentSceneName == "CodeKevinScene")
         {
@@ -87,6 +93,8 @@ public class Conditions : MonoBehaviour
         else if(levelIndex == 2)//Gage lvl
         {
             //ACTIVATE PAINT COLOR UI
+            if(notTesting == false)
+                LevelTwo();
         }
         else if(levelIndex ==3)//Kobe lvl
         {
