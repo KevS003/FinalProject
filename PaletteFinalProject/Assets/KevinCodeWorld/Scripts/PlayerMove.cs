@@ -112,6 +112,13 @@ public class PlayerMove : MonoBehaviour
             ControlPlayer();
         if(transform.position == respawnRef)
             StartCoroutine(TPtimer(1));
+        if(condScriptRef.levelIndex == 3)
+        {
+            if(condScriptRef.enemyKillCount == condScriptRef.enemyAmount)
+            {
+                Conditions(1);//win cond for lvl 3
+            }
+        }
     }
     void ControlPlayer()
     {
@@ -380,6 +387,11 @@ public class PlayerMove : MonoBehaviour
         {
             starryMComplete = true;
         }
+        else if(condScriptRef.levelIndex == 2)
+        {
+            secondLvlComp = true;
+        }
+        
         Conditions(1);
     }
   }

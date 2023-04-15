@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Yeet : MonoBehaviour
 {
+    //conditions ref
+    public Conditions condRef;
     //sound variables
     public AudioSource audioSource;
     public AudioClip firework;
@@ -22,7 +24,10 @@ public class Yeet : MonoBehaviour
     public float yeetPowerEnemy = 10000000;
     public float yeetPowerObject = 10000;
     public float yeetPowerStar = 5000000;
+    //lvl three stuff
+    bool scoreGiven = false;
     bool isEnemy;
+
     bool isStar;
     bool isDummy;
     public GameObject painting;
@@ -76,6 +81,11 @@ public class Yeet : MonoBehaviour
             if(impact.collider.tag == ("Wall"))
             {
                 //audioSource.PlayOneShot(splashWallSound);
+                if(scoreGiven ==false)
+                {
+                    scoreGiven = true;
+                    condRef.enemyKill();
+                }
                 painting.SetActive(true);
                 stopMove.isKinematic = true;
                 offObj.enabled = false;

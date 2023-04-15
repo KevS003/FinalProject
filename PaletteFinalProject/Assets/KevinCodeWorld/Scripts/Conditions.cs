@@ -16,6 +16,10 @@ public class Conditions : MonoBehaviour
     public PlayerMove playerVarRef;
     //determines if Player wins or loses
 
+    //lvl three var
+    public int enemyKillCount=0;
+    public int enemyAmount;//update if enemy amount is increased
+
     //Variables for levels
     [HideInInspector]
     public int levelIndex;
@@ -56,6 +60,7 @@ public class Conditions : MonoBehaviour
         }
         else if(currentSceneName == "Level Four")
         {
+            levelIndex = 0;
             //tracks canvas 
             if(starryMountainComplete)
             {
@@ -67,7 +72,7 @@ public class Conditions : MonoBehaviour
             }
             else if(lvlThreeComplete)
             {
-
+                //spawn paint obj
             }
             if(lvlThreeComplete && lvlTwoComplete && starryMountainComplete)
             {
@@ -92,6 +97,8 @@ public class Conditions : MonoBehaviour
         }
         else if(levelIndex == 2)//Gage lvl
         {
+            if(playerVarRef.secondLvlComp == true)
+                LevelTwoComplete();
             //ACTIVATE PAINT COLOR UI
             if(notTesting == false)
                 LevelTwo();
@@ -99,7 +106,11 @@ public class Conditions : MonoBehaviour
         else if(levelIndex ==3)//Kobe lvl
         {
             //ACTIVATE WHATEVER HE WANTS
-            timeUpd();
+            if(enemyKillCount == enemyAmount)
+            {
+                LevelThreeComplete();
+            }
+
         }
         else if(levelIndex == 4)//Hub
         {
@@ -130,12 +141,26 @@ public class Conditions : MonoBehaviour
             //kill the player and open menu options
         }
     }
+    void LevelTwoComplete()
+    {
+        lvlTwoComplete = true;
+    }
     void LevelThree()
     {
+        //enemy kill count = win
+    }
+    void LevelThreeComplete()
+    {
+        lvlThreeComplete = true;
     }
     public void timeUpd()
     {
         //add timer plus code here
         timer += timeBonus;
+    }
+    public void enemyKill()
+    {
+        enemyKillCount++;
+        Debug.Log(enemyKillCount);
     }
 }
