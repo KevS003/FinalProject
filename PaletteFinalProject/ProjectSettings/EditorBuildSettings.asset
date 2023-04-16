@@ -11,10 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hub.unity
     guid: 719b108f82484104881a619fe14b1444
-  - enabled: 1
-    path: Assets/Scenes/Level Dumb.unity
-    guid: 90d24605197a41947ad76e86f9002e27
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level Two.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Level One.unity
+    guid: 420fefa1951bea94585e004a05d57a9b
+  - enabled: 1
+    path: Assets/Scenes/Level Three.unity
+    guid: 5003276afa45b6f4cba3c73eb9fe9de3
   m_configObjects: {}

@@ -7,6 +7,9 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
+    //lvl3 UI
+    public GameObject enemyCountImage;
+    public TextMeshProUGUI enemyCount;
     //conditionsScriptRef
     public Conditions condRef;
     //starry night
@@ -51,6 +54,13 @@ public class UI : MonoBehaviour
         else if(currentSceneName =="Level Three")
         {
             lvlNum = 3;
+            enemyCountImage.SetActive(true);
+            enemyCount.text = condRef.enemyKillCount.ToString("f0") + "/" + condRef.enemyAmount.ToString("f0");
+            //set kill count UI image here
+        }
+        else if(currentSceneName == "Hub")
+        {
+            //Activate tracker here
         }
     }
 
@@ -86,5 +96,9 @@ public class UI : MonoBehaviour
             mountainStarObj.SetActive(true);
             condRef.StarryNightActivateOBJ();
         }
+    }
+    public void LvlThree(int enemyKillC, int enemyTotal)
+    {
+        enemyCount.text = enemyKillC.ToString("f0") + "/" + enemyTotal.ToString("f0");
     }
 }

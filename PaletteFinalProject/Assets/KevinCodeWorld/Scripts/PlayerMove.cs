@@ -253,7 +253,8 @@ public class PlayerMove : MonoBehaviour
             //Come back when yeet script is created
             //Make way to keep track of way player is facing 
             Yeet enemyYeet=enemiesInRange[i].GetComponent<Yeet>();
-            enemyYeet.getDir(moveDir);
+            if(enemyYeet!= null)
+                enemyYeet.getDir(moveDir);
         }
         for(int i = 0; i < objInRange.Length; i++)
         {
@@ -391,7 +392,9 @@ public class PlayerMove : MonoBehaviour
         {
             secondLvlComp = true;
         }
-        
+        else if(condScriptRef.levelIndex == 3)
+            thirdLvlComp = true;
+              
         Conditions(1);
     }
   }

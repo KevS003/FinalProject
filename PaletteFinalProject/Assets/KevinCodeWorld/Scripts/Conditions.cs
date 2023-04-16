@@ -6,12 +6,23 @@ using TMPro;
 
 public class Conditions : MonoBehaviour
 {
+    //UI reference
+    public UI uiref;
+    //HUB FINAL WIN OBJECT SPAWNS
+    public GameObject winZoneForPainting;
+    public GameObject fullPainting;
     //lvl two var
     public bool notTesting = false;
     //game tracker
-    public static bool starryMountainComplete = false;
-    public static bool lvlTwoComplete = false;
-    public static bool lvlThreeComplete = false;
+    static int starryMountainComplete=0;
+    public int sMCcopy;
+    public GameObject starryMountainCanvas;
+    static int lvlTwoComplete=0;
+    public int lvlTCcopy;
+    public GameObject lvlTwoCanvas;
+    static int lvlThreeComplete=0;
+    public int lvlThreeCcopy;
+    public GameObject lvlThreeCanvas;
     //player script
     public PlayerMove playerVarRef;
     //determines if Player wins or loses
@@ -37,6 +48,10 @@ public class Conditions : MonoBehaviour
     //fill start function with level conditions
     void Start()
     {
+        sMCcopy = starryMountainComplete;
+        lvlTCcopy = lvlTwoComplete;
+        lvlThreeCcopy = lvlThreeComplete;
+
         string currentSceneName = SceneManager.GetActiveScene().name;
         if(currentSceneName =="Level One")
         {
@@ -58,26 +73,10 @@ public class Conditions : MonoBehaviour
             levelIndex =3;
             
         }
-        else if(currentSceneName == "Level Four")
+        else if(currentSceneName == "Hub")
         {
-            levelIndex = 0;
+            levelIndex = 4;
             //tracks canvas 
-            if(starryMountainComplete)
-            {
-                //paint canvas
-            }
-            else if(lvlTwoComplete)
-            {
-                //SetActive()//paint object
-            }
-            else if(lvlThreeComplete)
-            {
-                //spawn paint obj
-            }
-            if(lvlThreeComplete && lvlTwoComplete && starryMountainComplete)
-            {
-                //Spawn game winning object here
-            }
         }
         else if(currentSceneName == "CodeKevinScene")
         {
@@ -114,7 +113,28 @@ public class Conditions : MonoBehaviour
         }
         else if(levelIndex == 4)//Hub
         {
+            if(sMCcopy==1)
+            {
+                Debug.Log("Lvl1Complete");
+                starryMountainCanvas.SetActive(true);
+            }
+            else if(lvlTCcopy==1)
+            {
+                Debug.Log("Lvl2Complete");
+                lvlTwoCanvas.SetActive(true);//paint object
+            }
+            else if(lvlThreeCcopy==1)
+            {
+                Debug.Log("Lvl3Complete");
+                lvlThreeCanvas.SetActive(true);
+            }
             //ACTIVATE LVL TRACKER
+            if(lvlThreeCcopy==1 && lvlTCcopy==1 && sMCcopy==1)
+            {
+                //Spawn game winning object here
+                fullPainting.SetActive(true);
+                winZoneForPainting.SetActive(true);
+            }
         }
     }
 
@@ -125,7 +145,7 @@ public class Conditions : MonoBehaviour
     }
     void StarryNightComplete()
     {
-        starryMountainComplete = true;
+        starryMountainComplete = 1;
     }
     void LevelTwo()
     {
@@ -143,7 +163,7 @@ public class Conditions : MonoBehaviour
     }
     void LevelTwoComplete()
     {
-        lvlTwoComplete = true;
+        lvlTwoComplete = 1;
     }
     void LevelThree()
     {
@@ -151,7 +171,7 @@ public class Conditions : MonoBehaviour
     }
     void LevelThreeComplete()
     {
-        lvlThreeComplete = true;
+        lvlThreeComplete = 1;
     }
     public void timeUpd()
     {
@@ -161,6 +181,7 @@ public class Conditions : MonoBehaviour
     public void enemyKill()
     {
         enemyKillCount++;
+        uiref.LvlThree(enemyKillCount, enemyAmount);
         Debug.Log(enemyKillCount);
     }
 }

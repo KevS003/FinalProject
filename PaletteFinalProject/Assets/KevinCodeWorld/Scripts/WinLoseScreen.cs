@@ -56,7 +56,7 @@ public class WinLoseScreen : MonoBehaviour
         {
             if(winL ==1)
             {
-                winLoseText.text = "The painting has been complete!";//win
+                winLoseText.text = "The painting has been complete! The artist has found their art again!";//win
             }
         }
         winLMenuUI.SetActive(true);
