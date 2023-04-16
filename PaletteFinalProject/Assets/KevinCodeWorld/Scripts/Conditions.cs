@@ -6,6 +6,8 @@ using TMPro;
 
 public class Conditions : MonoBehaviour
 {
+    //options
+    public static bool infinTime;
     //UI reference
     public UI uiref;
     //HUB FINAL WIN OBJECT SPAWNS
@@ -151,9 +153,13 @@ public class Conditions : MonoBehaviour
     {
         if (timer > 0f && playerVarRef.vantaHealth >0)
         {
-            timer -= Time.deltaTime;
-            timerText.text = timer.ToString("f0");
-            Debug.Log("Timer: "+ timer);
+            if(infinTime == false)
+            {
+                timer -= Time.deltaTime;
+                timerText.text = timer.ToString("f0");
+                Debug.Log("Timer: "+ timer);
+            }
+
         }
         else
         {
@@ -183,5 +189,12 @@ public class Conditions : MonoBehaviour
         enemyKillCount++;
         uiref.LvlThree(enemyKillCount, enemyAmount);
         Debug.Log(enemyKillCount);
+    }
+    public void OptionsSel(int i)
+    {
+        if(i == 1)
+            infinTime = true;
+        else if(i ==-1)
+            infinTime = false;
     }
 }

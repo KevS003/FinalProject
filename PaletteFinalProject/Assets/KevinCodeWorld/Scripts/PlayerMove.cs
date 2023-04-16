@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    //options menu
+    public static bool infinHealth;
+    public static bool removeDoublJmp;
     //level var
     public bool starryMComplete = false;
     public bool secondLvlComp = false;
@@ -172,7 +175,7 @@ public class PlayerMove : MonoBehaviour
                 controller.Move(moveDir.normalized * airSpeed * Time.deltaTime);
         }
         //sprint stuff
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift)|| Input.GetButtonDown("Sprint"))
         {
             speed += sprintBoost;
             isSprinting = true;
@@ -209,7 +212,7 @@ public class PlayerMove : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         //melee stuff
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)|| Input.GetButtonDown("Melee"))
         {
             playerAnim.Play("Melee");
             MeleeLaunch(); 
@@ -313,12 +316,17 @@ public class PlayerMove : MonoBehaviour
 
     void DoubleJump()//Try it out
     {
-        //PlaySound(jumpSound, 1);
-        velocity.y = Mathf.Sqrt(jumpHeight/2 * -2f * gravity);
-        doubleJump--;
-        animationHash = Animator.StringToHash("Jump");
-        playerAnim.Play(animationHash, -1, djStartnum);
-        //do it incase 
+        if(removeDoublJmp == false)
+        {
+            //PlaySound(jumpSound, 1);
+            velocity.y = Mathf.Sqrt(jumpHeight/2 * -2f * gravity);
+            doubleJump--;
+            animationHash = Animator.StringToHash("Jump");
+            playerAnim.Play(animationHash, -1, djStartnum);
+            //do it incase 
+
+        }
+
     }
 
   void OnTriggerEnter(Collider contact)//I'm not sure if this works with player collider
@@ -341,14 +349,15 @@ public class PlayerMove : MonoBehaviour
         currentCP = contact.transform.position;
         Debug.Log("CPFound"+ currentCP);
     }
-    if(contact.tag == "DeathBorder" || contact.tag == "EnemyProjectile" || contact.tag == "Enemy")
+    if(contact.tag == "DeathBorder"  ||  contact.tag == "Enemy")
     {
         
         
         Debug.Log("dmg!" + vantaHealth);
         if(contact.tag == "DeathBorder"&& vantaHealth > 0)
         {
-            vantaHealth--;
+            if(infinHealth == false)
+                vantaHealth--;
             Debug.Log("TP ME!");
             isTP = true;
             Teleport(currentCP);
@@ -358,7 +367,8 @@ public class PlayerMove : MonoBehaviour
         if(contact.tag == "Enemy"&& vantaHealth > 0)
         {
             //PlaySound(dmg, 1);
-            vantaHealth--;
+            if(infinHealth == false)
+                vantaHealth--;
             Debug.Log("DMG ME!");
             //isTP = true;
             //Teleport(currentCP);
@@ -461,6 +471,18 @@ public class PlayerMove : MonoBehaviour
             //lose stuff
         }
 
+    }
+
+    public void OptionsSel(int i)
+    {
+        if(i==1)
+         infinHealth = true;
+        else if(i == 2)
+         removeDoublJmp = true;
+        else if(i==-1)
+            infinHealth = false;
+        else if(i ==-2)
+            removeDoublJmp = false;
     }
 
     /*public void Win()
