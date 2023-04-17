@@ -134,7 +134,7 @@ public class PlayerMove : MonoBehaviour
             if(walkingSound == 1)
             {
                 PlaySound(walking,1);
-                walkingSound--;
+                walkingSound=0;
             }
             if(isSprinting == false)
                 PlayAnim(2);
@@ -153,8 +153,10 @@ public class PlayerMove : MonoBehaviour
         else
         {
             currentSpeed = startSpeed;
-            walkingSound++;
-            PlaySound(walking, 0);
+            walkingSound= 1;
+            if(walkingSound == 1)
+                PlaySound(walking, 0);
+            
             PlayAnim(-2);
             if(isSprinting == true)
             {
@@ -236,7 +238,7 @@ public class PlayerMove : MonoBehaviour
     void MeleeLaunch()
     {
         //PlayAnim(5);
-        //PlaySound(swing,1);
+        PlaySound(swing,1);
         Vector3 direction = Vector3.forward;
         Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * rcRange));
         Debug.DrawRay(transform.position, transform.TransformDirection(direction * rcRange));
@@ -442,9 +444,15 @@ public class PlayerMove : MonoBehaviour
 
   public void PlaySound(AudioClip clip, int play)//1 is to start audio 0 is to stop audio
     {
+        //playerSound.volume = 1;
         if(play ==1)
-            playerSound.PlayOneShot(clip);
-        else
+        {
+            if(clip ==walking)
+                playerSound.PlayOneShot(clip, 1f);
+            else
+                playerSound.PlayOneShot(clip, .7f);
+        }
+        else if(play == 0)
             playerSound.Stop();
     }
     
