@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
     public AudioClip dmg;
     public AudioClip jumpSound;
     public AudioClip pickUp;
+    bool footstepsPlaying = false;
     int walkingSound =0;
 
     //checkpoint stuff
@@ -156,6 +157,16 @@ public class PlayerMove : MonoBehaviour
             }
         }
         Vector3 direction = new Vector3(horizontal,0f, vertical).normalized;
+        if ((horizontal != 0 || vertical != 0) && footstepsPlaying == false)
+        {
+            footSteps.Play();
+            footstepsPlaying = true;
+        }
+        else if (((horizontal == 0 && vertical == 0) && footstepsPlaying == true) || !isGrounded)
+        {
+            footstepsPlaying = false;
+            footSteps.Stop();
+        }
         if(direction.magnitude >=0.1f)
         {
             
