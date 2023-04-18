@@ -120,12 +120,12 @@ public class Conditions : MonoBehaviour
                 Debug.Log("Lvl1Complete");
                 starryMountainCanvas.SetActive(true);
             }
-            else if(lvlTCcopy==1)
+            if(lvlTCcopy==1)
             {
                 Debug.Log("Lvl2Complete");
                 lvlTwoCanvas.SetActive(true);//paint object
             }
-            else if(lvlThreeCcopy==1)
+            if(lvlThreeCcopy==1)
             {
                 Debug.Log("Lvl3Complete");
                 lvlThreeCanvas.SetActive(true);

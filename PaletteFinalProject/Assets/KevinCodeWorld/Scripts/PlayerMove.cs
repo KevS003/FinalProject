@@ -30,11 +30,13 @@ public class PlayerMove : MonoBehaviour
 
     //sound stuff
     AudioSource playerSound;
+    public AudioSource footSteps;
     public AudioClip walking;
     public AudioClip swing;
     public AudioClip dmg;
     public AudioClip jumpSound;
-    int walkingSound =1;
+    public AudioClip pickUp;
+    int walkingSound =0;
 
     //checkpoint stuff
     public GameObject startPositionO;//initialize in start function
@@ -130,12 +132,7 @@ public class PlayerMove : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");//-1 if A, 1 if D
         float vertical = Input.GetAxisRaw("Vertical");//-1 s, 1 W
         if(horizontal > 0 || vertical >0 || horizontal<0 ||vertical < 0)
-        {
-            if(walkingSound == 1)
-            {
-                PlaySound(walking,1);
-                walkingSound=0;
-            }
+        {  
             if(isSprinting == false)
                 PlayAnim(2);
             else if(isSprinting == true)
@@ -146,17 +143,12 @@ public class PlayerMove : MonoBehaviour
             if(currentSpeed<=speed)
             {
                 currentSpeed+=rampUpRate*Time.deltaTime;
-            }
-            
-            
+            } 
         }
         else
         {
             currentSpeed = startSpeed;
-            walkingSound= 1;
-            if(walkingSound == 1)
-                PlaySound(walking, 0);
-            
+            //PlaySound(walking, 0);
             PlayAnim(-2);
             if(isSprinting == true)
             {
@@ -225,7 +217,7 @@ public class PlayerMove : MonoBehaviour
 
     void JumpPlayer(float moveDirJ)
     {
-        //PlaySound(jumpSound, 1);
+        PlaySound(jumpSound, 1);
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         if(moveDirJ > 0)
             velocity += transform.forward * (currentSpeed/1.5f);
@@ -280,13 +272,21 @@ public class PlayerMove : MonoBehaviour
         {
 
             if(animNum == 2)
+            {
                 playerAnim.SetBool("Move",true);
+            }
             else if(animNum == 3)
+            {
                 playerAnim.SetBool("Jump", true);
+            }
             else if(animNum ==4)
+            {
                 playerAnim.SetBool("Sprint",true);
+            }
             else if(animNum == 5)
+            {
                 playerAnim.SetBool("Melee", true);
+            }
         }
         else
         {
@@ -320,7 +320,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(removeDoublJmp == false)
         {
-            //PlaySound(jumpSound, 1);
+            PlaySound(jumpSound, 1);
             velocity.y = Mathf.Sqrt(jumpHeight/2 * -2f * gravity);
             doubleJump--;
             animationHash = Animator.StringToHash("Jump");
@@ -337,6 +337,7 @@ public class PlayerMove : MonoBehaviour
 
     if(contact.tag == "SpeedBoost")
     {
+        PlaySound(pickUp,1);
         Debug.Log("SPEED UP");
         StartCoroutine(SpeedBoost(powerUpLength));
         //Speedboost text here//reference UI script here
@@ -344,6 +345,7 @@ public class PlayerMove : MonoBehaviour
     }
     if(contact.tag == "LedgeReveal")
     {
+        PlaySound(pickUp,1);
         StartCoroutine(UItimerHV(hiddenLedgeTimer));
     }
     if(contact.tag == "Checkpoint")
@@ -368,7 +370,7 @@ public class PlayerMove : MonoBehaviour
         }
         if(contact.tag == "Enemy"&& vantaHealth > 0)
         {
-            //PlaySound(dmg, 1);
+            PlaySound(dmg, 1);
             if(infinHealth == false)
                 vantaHealth--;
             Debug.Log("DMG ME!");
@@ -391,6 +393,7 @@ public class PlayerMove : MonoBehaviour
     }
     if(contact.tag == "Clock")
     {
+        PlaySound(pickUp,1);
         condScriptRef.timeUpd();
         Destroy(contact.gameObject);
     }
@@ -444,17 +447,26 @@ public class PlayerMove : MonoBehaviour
 
   public void PlaySound(AudioClip clip, int play)//1 is to start audio 0 is to stop audio
     {
-        //playerSound.volume = 1;
-        if(play ==1)
+        if(vantaHealth >0)
         {
-            if(clip ==walking)
+        //playerSound.volume = 1;
+            if(play ==1 && clip!=walking)
+            {
+
                 playerSound.PlayOneShot(clip, 1f);
-            else
-                playerSound.PlayOneShot(clip, .7f);
+            }
+            else if(play == 0 && clip!=walking)
+                playerSound.Stop();
         }
-        else if(play == 0)
-            playerSound.Stop();
     }
+    public void PlayFootStep(int play)
+    {
+        if(play ==1)
+            footSteps.Play();
+        else
+            footSteps.Stop();
+    }
+
     
    private IEnumerator StopAnim(float interval)
     {

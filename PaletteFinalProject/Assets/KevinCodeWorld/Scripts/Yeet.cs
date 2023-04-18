@@ -71,7 +71,10 @@ public class Yeet : MonoBehaviour
     {
         if(impact.collider.tag == ("Brush"))
         {
-            //audioSource.PlayOneShot(sploshSound);
+            if(isStar == false)
+                audioSource.PlayOneShot(sploshSound,1f);
+            else
+                audioSource.PlayOneShot(firework,.7f);
             if(isDummy == false)
                 yeet(dir);
         }
@@ -80,7 +83,7 @@ public class Yeet : MonoBehaviour
             //make wall impact to stick enemies
             if(impact.collider.tag == ("Wall"))
             {
-                //audioSource.PlayOneShot(splashWallSound);
+                audioSource.PlayOneShot(splashWallSound,.7f);
                 if(scoreGiven ==false)
                 {
                     scoreGiven = true;
@@ -98,7 +101,7 @@ public class Yeet : MonoBehaviour
             //audioSource.PlayOneShot(firework);
             if(impact.collider.tag == ("Wall"))
             {
-                //audioSource.PlayOneShot(fireworkExplosion);
+                audioSource.PlayOneShot(fireworkExplosion,1);
                 painting.SetActive(true);
                 stopMove.isKinematic = true;
                 offObj.enabled = false;
@@ -112,8 +115,9 @@ public class Yeet : MonoBehaviour
         }
         else if(isDummy)
         {
-            //audioSource.PlayOneShot(sploshSound);
+            //audioSource.PlayOneShot(sploshSound,1f);
             dummyObj.SetActive(true);
+
         }
 
     }
@@ -122,4 +126,5 @@ public class Yeet : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody>().AddForce(direction *yeetPower * Time.deltaTime);
     }
+
 }

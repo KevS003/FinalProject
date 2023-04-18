@@ -23,7 +23,7 @@ public class WinLoseScreen : MonoBehaviour
         //changes text
             if(winL ==1)
             {
-                winLoseText.text = "Paint onto the night";//win
+                //winLoseText.text = "Paint onto the night";//win
             }
             else
             {
@@ -34,7 +34,7 @@ public class WinLoseScreen : MonoBehaviour
         {
             if(winL ==1)
             {
-                winLoseText.text = "You dominated the maze!";//win
+                //winLoseText.text = "You dominated the maze!";//win
             }
             else
             {
@@ -45,7 +45,7 @@ public class WinLoseScreen : MonoBehaviour
         {
             if(winL ==1)
             {
-                winLoseText.text = "You survived the gauntlet!";//win
+                //winLoseText.text = "You survived the gauntlet!";//win
             }
             else
             {
@@ -56,7 +56,7 @@ public class WinLoseScreen : MonoBehaviour
         {
             if(winL ==1)
             {
-                winLoseText.text = "The painting has been complete! The artist has found their art again!";//win
+                //winLoseText.text = "The painting has been complete! The artist has found their art again!";//win
             }
         }
         winLMenuUI.SetActive(true);

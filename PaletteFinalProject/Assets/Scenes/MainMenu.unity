@@ -1696,7 +1696,7 @@ GameObject:
   - component: {fileID: 368863925}
   - component: {fileID: 368863924}
   m_Layer: 5
-  m_Name: Options (1)
+  m_Name: InfLivesOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,7 +1854,7 @@ GameObject:
   - component: {fileID: 369350763}
   - component: {fileID: 369350762}
   m_Layer: 5
-  m_Name: Options (3)
+  m_Name: InfnMazeTimeOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3006,7 +3006,7 @@ GameObject:
   - component: {fileID: 685603826}
   - component: {fileID: 685603825}
   m_Layer: 5
-  m_Name: Options (7)
+  m_Name: InfinMazeTimeOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3490,7 +3490,7 @@ GameObject:
   - component: {fileID: 760656553}
   - component: {fileID: 760656552}
   m_Layer: 5
-  m_Name: Options (2)
+  m_Name: HardModeOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3930,7 +3930,7 @@ GameObject:
   - component: {fileID: 869224884}
   - component: {fileID: 869224883}
   m_Layer: 5
-  m_Name: Options (4)
+  m_Name: InfLiveOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4419,7 +4419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4741663657859749579, guid: 55e95ce3d1772cd49a3fbc683f7b9fa9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4741663657859749589, guid: 55e95ce3d1772cd49a3fbc683f7b9fa9, type: 3}
       propertyPath: m_RootOrder
@@ -6972,7 +6972,7 @@ GameObject:
   - component: {fileID: 1787953896}
   - component: {fileID: 1787953895}
   m_Layer: 5
-  m_Name: Options (5)
+  m_Name: HardModeOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7942,6 +7942,13 @@ MonoBehaviour:
   uiImage: {fileID: 512202611}
   playRef: {fileID: 1940747416}
   condRef: {fileID: 990503676}
+  buttonsRef:
+  - {fileID: 368863922}
+  - {fileID: 869224881}
+  - {fileID: 760656550}
+  - {fileID: 1787953893}
+  - {fileID: 369350760}
+  - {fileID: 685603823}
 --- !u!114 &2030668943
 MonoBehaviour:
   m_ObjectHideFlags: 0
