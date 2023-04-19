@@ -129,7 +129,6 @@ public class PlayerMove : MonoBehaviour
     void ControlPlayer()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Debug.Log(isGrounded);
         float horizontal = Input.GetAxisRaw("Horizontal");//-1 if A, 1 if D
         float vertical = Input.GetAxisRaw("Vertical");//-1 s, 1 W
         if(horizontal > 0 || vertical >0 || horizontal<0 ||vertical < 0)
@@ -157,7 +156,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
         Vector3 direction = new Vector3(horizontal,0f, vertical).normalized;
-        if ((horizontal != 0 || vertical != 0) && footstepsPlaying == false)
+        if ((horizontal != 0 || vertical != 0) && footstepsPlaying == false && isGrounded)
         {
             footSteps.Play();
             footstepsPlaying = true;
