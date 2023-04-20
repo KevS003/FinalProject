@@ -58,6 +58,10 @@ public class WinLoseScreen : MonoBehaviour
             {
                 //winLoseText.text = "The painting has been complete! The artist has found their art again!";//win
             }
+            else
+            {
+                winLoseText.text = "\nWe tried to warn you";
+            }
         }
         winLMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;

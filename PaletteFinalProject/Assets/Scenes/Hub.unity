@@ -33567,15 +33567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.004684
+      value: 27.004683
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0238526
+      value: 2.0238523
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.394753
+      value: 10.3947525
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33711,7 +33711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6104116628742667988, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0908414
+      value: -0.090841345
       objectReference: {fileID: 0}
     - target: {fileID: 7174606111152072147, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_Volume
@@ -33839,11 +33839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2727866
+      value: 3.2727864
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.212526
+      value: 10.212525
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71264,6 +71264,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5952586790390597899, guid: 0b2335397fef1fb4db65027847c79430, type: 3}
+      propertyPath: condRef
+      value: 
+      objectReference: {fileID: 606200460}
+    - target: {fileID: 5952586790390597899, guid: 0b2335397fef1fb4db65027847c79430, type: 3}
+      propertyPath: playRef
+      value: 
+      objectReference: {fileID: 2056425630}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b2335397fef1fb4db65027847c79430, type: 3}
 --- !u!1 &1789885514
