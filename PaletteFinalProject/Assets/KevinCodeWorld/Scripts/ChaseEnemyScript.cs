@@ -7,6 +7,8 @@ public class ChaseEnemyScript : MonoBehaviour
 {
 
     private NavMeshAgent enemy;
+    public AudioSource bossM;
+    public AudioClip music;
 
     public Transform PlayerTarget;
     bool wallStick = false;
@@ -14,6 +16,9 @@ public class ChaseEnemyScript : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
+        bossM.clip = music;
+        bossM.Play();
+
     }
 
     // Update is called once per frame

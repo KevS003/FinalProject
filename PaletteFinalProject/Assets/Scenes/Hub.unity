@@ -33783,7 +33783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487843241029741953, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07483429
+      value: 0.07483435
       objectReference: {fileID: 0}
     - target: {fileID: 487843241029741953, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33795,7 +33795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487843241029741953, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07276353
+      value: -0.07276354
       objectReference: {fileID: 0}
     - target: {fileID: 1911691961825219188, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_Name
@@ -33911,7 +33911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7146496
+      value: 0.7146497
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -33919,7 +33919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.69566625
+      value: 0.6956661
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -34043,7 +34043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6104116628742667988, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0908414
+      value: -0.09084137
       objectReference: {fileID: 0}
     - target: {fileID: 7174606111152072147, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_Volume
@@ -35108,6 +35108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb376765eb190343a41fc41377b40ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossM: {fileID: 900099215}
+  music: {fileID: 8300000, guid: 33389f0ce6386d24ca6921b79975930b, type: 3}
   PlayerTarget: {fileID: 2056425631}
 --- !u!195 &848035258
 NavMeshAgent:
