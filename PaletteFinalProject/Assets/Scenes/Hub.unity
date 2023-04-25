@@ -23811,7 +23811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &554364613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27723,7 +27723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.35, y: 0.254}
+  m_AnchoredPosition: {x: -1.35, y: 0.398}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656017285
@@ -27749,7 +27749,8 @@ MonoBehaviour:
   m_text: "The Masterpiece is complete. \nYou did well, making your way through the
     trials of the creative process. \nIt is a difficult thing, to regain purpose
     again. \nBut you did it. \n\nNow all you have to do left is go back. \nGo back
-    to the beginning and walk backwards into the past."
+    to the beginning and walk backwards into the past.\n\nApproach your masterpiece
+    when you're ready to complete your journey."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27812,7 +27813,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -7.9036083, w: -6.695146}
+  m_margin: {x: 0, y: 0, z: -7.9036083, w: -14.96058}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -33899,15 +33900,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.004683
+      value: 27.004684
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0238523
+      value: 2.0238526
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.3947525
+      value: 10.394753
       objectReference: {fileID: 0}
     - target: {fileID: 5760888092283565335, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34171,11 +34172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2727864
+      value: 3.2727866
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.212525
+      value: 10.212526
       objectReference: {fileID: 0}
     - target: {fileID: 8984441172205904111, guid: a677bd215b5a4d847919bba8bc26437d, type: 3}
       propertyPath: m_LocalRotation.w
