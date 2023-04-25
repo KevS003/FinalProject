@@ -1651,7 +1651,7 @@ RectTransform:
   m_GameObject: {fileID: 294288087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
+  m_LocalScale: {x: 0.5686427, y: 0.5686427, z: 0.5686427}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943670014}
@@ -1659,7 +1659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 842, y: 85}
+  m_AnchoredPosition: {x: 633, y: -24}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294288089
@@ -1691,7 +1691,7 @@ MonoBehaviour:
     Art: Gage
 
 
-    Art:Kobe
+    Art: Kobe
 
 
     Code:
@@ -6810,7 +6810,7 @@ RectTransform:
   m_GameObject: {fileID: 1333347130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.90278, y: 0.90278, z: 0.90278}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943670014}
@@ -6818,7 +6818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.5, y: 64.8}
+  m_AnchoredPosition: {x: 2.5, y: 34.4}
   m_SizeDelta: {x: 88.767, y: 201.7457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1333347132
@@ -6845,9 +6845,12 @@ MonoBehaviour:
 
     WASD Move
 
-    Jump with space
+    Jump with spacebar
 
-    Left click melee
+    Left click to melee
+
+    E
+    to interact
 
 
 '
@@ -6877,8 +6880,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 21.98
+  m_fontSizeBase: 21.98
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9206,7 +9209,7 @@ RectTransform:
   m_GameObject: {fileID: 1961606666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75249, y: 0.75249, z: 0.75249}
+  m_LocalScale: {x: 0.6128203, y: 0.6128203, z: 0.6128203}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943670014}
@@ -9214,7 +9217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.349556, y: -53.841843}
+  m_AnchoredPosition: {x: 517, y: 72}
   m_SizeDelta: {x: 311.7747, y: 153.8015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961606668
@@ -9241,7 +9244,18 @@ MonoBehaviour:
 
     Left stick move player
 
-    Y button jump'
+    Right stick move camera
+
+    A
+    button to Jump
+
+    Top right bumper for melee
+
+    L3 for sprint
+
+    X to Interact
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9719,7 +9733,7 @@ RectTransform:
   m_GameObject: {fileID: 2057421756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87909484, y: 0.87909484, z: 0.87909484}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943670014}
@@ -9727,7 +9741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6, y: -1}
+  m_AnchoredPosition: {x: -1.6, y: -72.4}
   m_SizeDelta: {x: 119.9426, y: 22.6133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057421758
@@ -9750,7 +9764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turn Off about
+  m_text: Click on the about panels to turn off About
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9784,8 +9798,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
